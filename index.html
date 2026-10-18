@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amgad Beshir — Web Developer</title>
+
+  <!-- Google Fonts: a serif (Playfair) for headings + sans-serif (Inter) for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap">
+
+  <!-- Our external stylesheet (linked AFTER the font) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- HEADER: sticky bar, brand on the left + nav on the right (Flexbox) -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <!-- Brand (name) on the left -->
+      <a href="#top" class="brand">Amgad Beshir</a>
+
+      <!-- Hamburger button. Real <button> so the keyboard can focus it.
+           aria-expanded = is the drawer open, aria-controls points to the nav,
+           aria-label = the button's spoken name (script flips it when open). -->
+      <button type="button" class="menu-toggle"
+              aria-expanded="false" aria-controls="primary-nav"
+              aria-label="Open menu">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+
+      <!-- Primary navigation (links on the right) -->
+      <nav id="primary-nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO: name + tagline + call-to-action button, centered -->
+    <section class="hero">
+      <h1>Amgad Beshir</h1>
+      <p class="tagline">Junior Web Developer &amp; IT Student in Northern Virginia</p>
+      <a href="#projects" class="btn-primary">View my work</a>
+    </section>
+
+    <!-- ABOUT: two-column CSS Grid (text + image), collapses to one on phones -->
+    <section id="about" class="about">
+      <div>
+        <h2>About me</h2>
+        <p>
+          I'm Amgad, a final-year IT student at Northern Virginia Community College
+          (NOVA). I'm focused on two areas that excite me the most: web design and
+          cloud computing. On the web side, I enjoy writing clean, well-structured
+          HTML and CSS and building pages that look good and work smoothly on any
+          screen size, from phones to large desktops. I like the problem-solving
+          part of front-end work — figuring out why a layout breaks, learning a new
+          CSS technique, and seeing an idea turn into a real, working page. My goal
+          is to grow into a web developer who can both design and code, so I can take
+          a project from a rough concept all the way to a finished, responsive site.
+          I treat this portfolio as a living project: I keep learning, and I add each
+          new build to it as I go.
+        </p>
+      </div>
+      <!-- AI-assisted asset -->
+      <!-- Hero/about image generated with an AI image tool. alt written by me. -->
+      <img src="images/hero.jpg"
+           alt="A traditional Nubian village by the Nile with colorful painted houses, palm trees, and a felucca boat on the water">
+    </section>
+
+    <!-- SKILLS: responsive grid (auto-fit) of 6 skill cards -->
+    <section id="skills" class="skills">
+      <h2>Skills</h2>
+      <ul class="skills-grid">
+        <li class="skill-card"><span class="icon" aria-hidden="true">📄</span>
+          <h3>HTML</h3><p>Semantic, accessible page structure.</p></li>
+        <li class="skill-card"><span class="icon" aria-hidden="true">🎨</span>
+          <h3>CSS</h3><p>Styling, colors, and clean layouts.</p></li>
+        <li class="skill-card"><span class="icon" aria-hidden="true">📐</span>
+          <h3>Flexbox</h3><p>Flexible one-dimensional layouts.</p></li>
+        <li class="skill-card"><span class="icon" aria-hidden="true">🔲</span>
+          <h3>CSS Grid</h3><p>Two-dimensional responsive grids.</p></li>
+        <li class="skill-card"><span class="icon" aria-hidden="true">📱</span>
+          <h3>Responsive Design</h3><p>Pages that adapt to any screen.</p></li>
+        <li class="skill-card"><span class="icon" aria-hidden="true">🐙</span>
+          <h3>Git &amp; GitHub</h3><p>Version control and publishing.</p></li>
+      </ul>
+    </section>
+
+    <!-- PROJECTS: responsive grid of 3 real project cards from my class work -->
+    <section id="projects" class="projects">
+      <h2>Selected projects</h2>
+      <div class="projects-grid">
+
+        <article class="project-card">
+          <img src="https://picsum.photos/seed/flex/400/250" alt="Preview of a flexbox layout demo page">
+          <h3>Flexbox Layout Showcase</h3>
+          <p>A page demonstrating nav bar, centered hero, and a responsive card row with Flexbox.</p>
+          <a href="#">View project</a>
+        </article>
+
+        <article class="project-card">
+          <img src="https://picsum.photos/seed/gallery/400/250" alt="Preview of a photo gallery built with CSS Grid">
+          <h3>Photography Gallery</h3>
+          <p>A responsive CSS Grid gallery with a featured photo that spans two columns.</p>
+          <a href="#">View project</a>
+        </article>
+
+        <article class="project-card">
+          <img src="https://picsum.photos/seed/svg/400/250" alt="Preview of a hand-drawn SVG scene">
+          <h3>SVG Nubian Scene</h3>
+          <p>A hand-coded SVG scene using shapes, groups, and accessible titles.</p>
+          <a href="#">View project</a>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER: email, social links, copyright, AI disclosure (Flexbox) -->
+  <footer id="contact" class="site-footer">
+    <p>
+      <a href="mailto:amgadbeshir2108@gmail.com">amgadbeshir2108@gmail.com</a>
+    </p>
+    <p class="social">
+      <a href="https://github.com/aam73116-sys">GitHub</a> ·
+      <a href="#">LinkedIn</a>
+    </p>
+    <p>&copy; 2026 Amgad Beshir</p>
+    <p class="ai-disclosure">
+      AI Disclosure: The Nubian village image was generated with an AI image tool.
+    </p>
+  </footer>
+
+  <!-- Mobile-nav script -->
+  <script>
+    // Grab the button, the nav, and the body.
+    var btn = document.querySelector('.menu-toggle');
+    var nav = document.getElementById('primary-nav');
+
+    // setOpen opens/closes the drawer and keeps the ARIA state in sync.
+    function setOpen(open) {
+      document.body.classList.toggle('menu-open', open);          // triggers the CSS slide
+      btn.setAttribute('aria-expanded', String(open));            // tells screen readers
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+
+    // CLOSE PATH 1: tap the hamburger toggles open/closed.
+    btn.addEventListener('click', function () {
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    // CLOSE PATH 2: tapping any nav link closes the drawer.
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () { setOpen(false); });
+    });
+
+    // CLOSE PATH 3: pressing Escape closes the drawer if it is open.
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+  </script>
+</body>
+</html>
