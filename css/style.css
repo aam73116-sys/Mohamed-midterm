@@ -1,0 +1,181 @@
+/* =====================================================================
+   5-color palette:
+   bg: #fdf8f3   surface: #ffffff   text: #2b2b2b
+   primary: #7a3b2e   accent: #c46a3f
+   ===================================================================== */
+
+/* box-sizing reset so padding doesn't add to element width */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Base: body font, color, background, comfortable line-height */
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;  /* Google font with fallback */
+  color: #2b2b2b;
+  background-color: #fdf8f3;
+  line-height: 1.6;
+}
+
+/* Headings use the serif Google font. clamp() makes them fluid (hierarchy). */
+h1, h2 { font-family: "Playfair Display", Georgia, serif; line-height: 1.1; }
+h1 { font-size: clamp(2.5rem, 6vw, 4rem); }            /* biggest */
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); color: #7a3b2e; }
+h3 { font-size: clamp(1.1rem, 1.6vw, 1.3rem); }
+p  { font-size: clamp(1rem, 1.2vw, 1.125rem); max-width: 65ch; } /* readable line length */
+
+/* Images never overflow their container */
+img { max-width: 100%; height: auto; display: block; border-radius: 10px; }
+
+/* Primary call-to-action button */
+.btn-primary {
+  display: inline-block;
+  background-color: #7a3b2e;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ===== HEADER (Flexbox, sticky) ===== */
+.site-header {
+  position: sticky;   /* stays at the top while scrolling */
+  top: 0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+  z-index: 10;
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;  /* brand left, nav right */
+  align-items: center;             /* vertically centered */
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 24px;
+}
+.brand { font-weight: 700; font-size: 1.25rem; color: #7a3b2e; text-decoration: none; }
+#primary-nav a {
+  margin-left: 20px;
+  color: #2b2b2b;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===== HERO (centered with Flexbox, tall) ===== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 70vh;        /* substantial height */
+  padding: 24px;
+  gap: 16px;
+}
+.tagline { color: #555; }
+
+/* ===== ABOUT (CSS Grid: one column on phones) ===== */
+.about {
+  display: grid;
+  grid-template-columns: 1fr;   /* mobile: single column */
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 72px 24px;
+  align-items: center;
+}
+/* On tablet+ the About becomes two columns (text wider than image) */
+@media (min-width: 768px) {
+  .about { grid-template-columns: 2fr 1fr; }
+}
+
+/* ===== SKILLS (auto-fit grid — responds with no media query) ===== */
+.skills { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+}
+.skill-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+}
+.skill-card .icon { font-size: 2rem; }
+
+/* ===== PROJECTS (auto-fit grid) ===== */
+.projects { max-width: 1100px; margin: 0 auto; padding: 24px 24px 72px; }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.project-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0 0 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+}
+.project-card h3, .project-card p { padding: 0 16px; }
+.project-card a { padding: 0 16px; color: #c46a3f; font-weight: 600; }
+
+/* ===== FOOTER (Flexbox, centered) ===== */
+.site-footer {
+  background-color: #7a3b2e;
+  color: #ffffff;
+  text-align: center;
+  padding: 32px 24px;
+}
+.site-footer a { color: #ffffff; }
+.ai-disclosure { font-size: 0.85rem; color: #f0e0d6; }
+
+/* ===== FOCUS-VISIBLE (accessibility: ring on keyboard focus) ===== */
+:focus-visible {
+  outline: 3px solid #c46a3f;
+  outline-offset: 3px;
+}
+
+/* ===== MOBILE NAV (drawer below 768px) ===== */
+.menu-toggle { display: none; }   /* hidden on desktop */
+@media (max-width: 767px) {
+  /* show the hamburger on phones */
+  .menu-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .menu-toggle .bar { width: 26px; height: 3px; background: #7a3b2e; }
+
+  /* the nav becomes a drawer off-screen to the right */
+  #primary-nav {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: 300px; max-width: 85vw;
+    background: #ffffff;
+    transform: translateX(100%);       /* hidden off-screen */
+    transition: transform 0.28s ease;  /* smooth slide */
+    display: flex;
+    flex-direction: column;
+    padding: 80px 24px;
+  }
+  #primary-nav a { margin: 12px 0; }
+
+  /* when body has .menu-open, slide the drawer in */
+  body.menu-open #primary-nav { transform: translateX(0); }
+}
+
+/* ===== REQUIRED — Reduced motion guard ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
